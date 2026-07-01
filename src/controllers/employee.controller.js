@@ -94,6 +94,7 @@ const createEmployee = asyncHandler(async (req, res) => {
     department: trimmedDepartment,
     salary: Number(salary),
     position: trimmedPosition,
+    profileImage: req.file ? req.file.path : null,
   });
 
   res.status(201).json({

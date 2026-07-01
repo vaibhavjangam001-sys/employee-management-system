@@ -8,6 +8,7 @@ import {
 } from "../../controllers/employee.controller.js";
 import authenticate from "../../middlewares/auth.middleware.js";
 import authorize from "../../middlewares/authorize.middleware.js";
+import upload from "../../middlewares/upload.middleware.js";
 
 const router = Router();
 
@@ -16,7 +17,7 @@ const router = Router();
 
 router.get("/", authenticate, authorize("admin"), getEmployees);
 router.get("/:id", authenticate, authorize("admin"), getEmployeeById);
-router.post("/", authenticate, authorize("admin"), createEmployee);
+router.post("/", authenticate, authorize("admin"),upload.single("profileImage"),createEmployee);
 router.put("/:id", authenticate, authorize("admin"), updateEmployee);
 router.delete("/:id", authenticate, authorize("admin"), deleteEmployee);
 

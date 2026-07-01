@@ -8,6 +8,7 @@ const app = express();
 // middleware :-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads",express.static("uploads"));
 
 app.use("/api/v1/employees", employeeRoutes);
 app.use("/api/v1/auth", authRoutes);
